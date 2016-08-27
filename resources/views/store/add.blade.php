@@ -22,7 +22,7 @@
     <div>
     	<?php $types=['aa','bb','cc','dd']; ?>
     	@foreach($types as $type)
-    	<input class="w3-check" type="checkbox" name="types[]" value="{{$type}}">
+    	<input class="w3-radio" type="radio" name="type" value="{{$type}}">
 		<label class="w3-validate">{{$type}}</label>
 		@endforeach
     </div>

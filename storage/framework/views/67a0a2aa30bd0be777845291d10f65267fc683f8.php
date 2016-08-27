@@ -14,13 +14,7 @@
       <li>type:<?php echo e($store->type); ?></li>
     </ul>
 
-    <ul class="w3-ul w3-border">
-      <li><a href="/addMenu/<?php echo e($store->id); ?>" style="text-decoration:none;" ><h3 class='w3-text-theme w3-hover-text-amber'>Menu</h3></a></li>
-      <?php $__currentLoopData = $store->menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-      <li><?php echo e($menu->name); ?></li>
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-    </ul>
-
+<a href="<?php echo e(url('/menu/' . $store->id)); ?>" class="w3-btn w3-theme">Show Menu</a>
 </div>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 <?php $__env->stopSection(); ?>

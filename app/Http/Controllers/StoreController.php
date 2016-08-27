@@ -9,6 +9,11 @@ use App\Http\Requests;
 
 class StoreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {	
     	$stores = Store::all();
@@ -40,14 +45,14 @@ class StoreController extends Controller
     	$name = $request->name;
     	$tel = $request->tel;
     	$addr = $request->addr;
-    	$types = $request->types;
+    	$type = $request->type;
 
     	$store = new Store;
 
     	$store->name = $name;
     	$store->tel = $tel;
     	$store->addr = $addr;
-    	$store->type = implode(',', $types);
+    	$store->type = $type;
 
     	if($store->save()){
     		$request->session()->flash('success', 'addStore Successful');
@@ -71,14 +76,14 @@ class StoreController extends Controller
     	$name = $request->name;
     	$tel = $request->tel;
     	$addr = $request->addr;
-    	#$types = $request->types;
+        $type = $request->type;
 
     	$store = Store::find($id);
 
     	$store->name = $name;
     	$store->tel = $tel;
     	$store->addr = $addr;
-    	#$store->type = implode(',', $types);
+    	$store->type = $type;
 
     	if($store->save()){
     		$request->session()->flash('success', 'editStore Successful');

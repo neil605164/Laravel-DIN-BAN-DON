@@ -15,13 +15,7 @@
       <li>type:{{ $store->type }}</li>
     </ul>
 
-    <ul class="w3-ul w3-border">
-      <li><a href="/addMenu/{{ $store->id }}" style="text-decoration:none;" ><h3 class='w3-text-theme w3-hover-text-amber'>Menu</h3></a></li>
-      @foreach($store->menus as $menu)
-      <li>{{ $menu->name }}</li>
-      @endforeach
-    </ul>
-
+<a href="{{ url('/menu/' . $store->id) }}" class="w3-btn w3-theme">Show Menu</a>
 </div>
 @endforeach
 @endsection

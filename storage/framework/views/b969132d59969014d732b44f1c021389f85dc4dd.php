@@ -1,7 +1,7 @@
 <?php $__env->startSection('title', 'Store Information'); ?>
 
 <?php $__env->startSection('content'); ?>
-<form class="w3-container" method="POST" action="<?php echo e(url('/addStore')); ?>">
+<form class="w3-container" method="POST" action="<?php echo e(url('/add')); ?>">
 	<?php echo e(csrf_field()); ?>
 
     <div class="w3-input-group">
@@ -22,7 +22,7 @@
     <div>
     	<?php $types=['aa','bb','cc','dd']; ?>
     	<?php $__currentLoopData = $types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-    	<input class="w3-check" type="checkbox" name="types[]" value="<?php echo e($type); ?>">
+    	<input class="w3-radio" type="radio" name="type" value="<?php echo e($type); ?>">
 		<label class="w3-validate"><?php echo e($type); ?></label>
 		<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
     </div>

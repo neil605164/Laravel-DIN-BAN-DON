@@ -19,6 +19,18 @@
         <label for="password" class="w3-label w3-text-blue">Store Address</label>
         <input type="text" class="w3-input w3-border" name="addr" value="{{$store->addr}}" >
     </div class="w3-input-group">
+
+    <div>
+        <?php $types=['aa','bb','cc','dd']; ?>
+        @foreach($types as $type)
+            @if($type == $store->type)
+                <input class="w3-radio" type="radio" name="type" value="{{$type}}" checked/>
+            @else 
+                <input class="w3-radio" type="radio" name="type" value="{{$type}}" >
+            @endif
+            <label class="w3-validate">{{$type}}</label>
+        @endforeach
+    </div>
     
     <input type="hidden" name="id" value="{{$store->id}}">   
 
