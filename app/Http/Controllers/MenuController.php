@@ -14,10 +14,25 @@ class MenuController extends Controller
         $this->middleware('auth');
     }
 
-    public function index($id)
+    public function index(Request $request, $id)
     {
         $store = Store::find($id);
-        return view('menu.index', ['store' => $store]);
+        
+
+        $message = '';
+        if ($request->session()->has('success')) {
+            $message = session('success');
+        }
+        if ($request->session()->has('error')) {
+            $message = session('error');
+        }
+
+        $class = ['w3-pale-blue w3-border-blue', 'w3-pale-green w3-border-green','w3-pale-red w3-border-red', 'w3-pale-yellow w3-border-yellow'];
+
+        #message value & store value for $data
+        $data = ['message' => $message, 'store' => $store, "class" =>$class];
+
+        return view('menu.index', $data);
     }
 
      public function add($id)
@@ -55,26 +70,49 @@ class MenuController extends Controller
 
     public function editProcess(Request $request)
     {
-        $store_id = $request->store_id;
         $id = $request->id;
         $name = $request->name;
         $price = $request->price;
-        
+        $store_id = $request->store_id;
 
-        $menu = Menu::find($id);
-        if (!$menu) {
-           return redirect('/store');
+        if($store_id){
+
+            $menus = Menu::find($id);
+
+            if (!$menus) {
+               return redirect('/store');
+            }
+
+            $i=0;
+            foreach($menus as $menu){
+                $menu->name = $name[$i];
+                $menu->price = $price[$i];
+
+                $menu->save();
+
+                $i++;
+            }
         }
 
-        $menu->name = $name;
-        $menu->price = $price;
+       
+        $request->session()->flash('success', 'edit Menu Successful');
 
-
-        if($menu->save()){
-            $request->session()->flash('success', 'editStore Successful');
-        }else{
-            $request->session()->flash('error', 'editStore Error');
-        }
         return redirect('/menu/'. $store_id);
+    }
+
+    public function deleteProcess(Request $request)
+    {
+        $id = $request->id;
+
+        $store = Store::find($id);
+
+        foreach ($store->menus as $menu) {
+            $menu->delete();
+        }
+
+        $request->session()->flash('success', 'delete Menu Successful');
+
+        return redirect('/store');
+
     }
 }

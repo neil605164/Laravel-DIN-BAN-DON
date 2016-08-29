@@ -3,6 +3,7 @@
 
 @section('content')
 
+<p>{{$message}}</p>
 <a href="{{ url('/addMenu/' . $store->id) }}" style="text-decoration:none; position: fixed; top: 52px; right: 50px;" class="w3-btn-floating w3-teal w3-right ">+</a>
 <h1>{{$store->name}}</h1>
 

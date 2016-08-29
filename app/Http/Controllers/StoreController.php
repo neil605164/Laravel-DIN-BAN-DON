@@ -96,20 +96,11 @@ class StoreController extends Controller
     public function deleteProcess(Request $request)
     {
     	$id = $request->id;
-    	$name = $request->name;
-    	$tel = $request->tel;
-    	$addr = $request->addr;
-    	#$types = $request->types;
 
     	$store = Store::find($id);
 
-    	$store->name = $name;
-    	$store->tel = $tel;
-    	$store->addr = $addr;
-    	#$store->type = implode(',', $types);
-
     	if($store->delete()){
-    		$request->session()->flash('success', 'editStore Successful');
+            $request->session()->flash('success', 'editStore Successful');
     	}else{
     		$request->session()->flash('error', 'editStore Error');
     	}
