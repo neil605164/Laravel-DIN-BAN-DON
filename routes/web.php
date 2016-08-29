@@ -47,5 +47,16 @@ Route::put('/editMenu', 'MenuController@editProcess');
 
 Route::delete('/aa', 'MenuController@deleteProcess');
 
+#boarder
+/*
+index
+create order
+add order
+delete order
+delete boarder
+*/
+Route::get('/create/{id}', 'BoardController@create');
+
+
 Auth::routes();
 

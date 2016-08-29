@@ -9,6 +9,7 @@ use App\Http\Requests;
 
 class StoreController extends Controller
 {
+    //只在登入後才可看見的功能
     public function __construct()
     {
         $this->middleware('auth');
