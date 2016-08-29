@@ -10,4 +10,9 @@ class Store extends Model
     {
     	return $this->hasMany('App\Menu');	
     }
+
+    public function boards()
+    {
+    	return $this->hasMany('App\Board');		
+    }
 }

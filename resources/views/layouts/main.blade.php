@@ -23,12 +23,12 @@
                 </div>
         </div>
         <br>
-        <a href="{{ url('/') }}">Home</a>
-        <a href="{{ url('/store') }}">store</a>
-        <a href="#">Messages</a>
+        <a href="{{ url('/') }}">首頁</a>
+        <a href="{{ url('/store') }}">店家資訊</a>
+        <a href="{{ url('/create') }}">揪團訂購</a>
         @if (Auth::guest())
-        <a href="{{ url('/login') }}">login</a>
-        <a href="{{ url('/register') }}">Register</a>
+        <a href="{{ url('/login') }}">登入</a>
+        <a href="{{ url('/register') }}">登出</a>
         @else
         <a href="{{ url('/logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
 

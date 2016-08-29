@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Store;
 use App\Menu;
+use App\Board;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,9 +17,9 @@ class BoardController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request, $id)
+    public function index(Request $request)
     {
-        $store = Store::find($id);
+        $boards = Board::all();
         
 
         $message = '';
@@ -29,16 +30,39 @@ class BoardController extends Controller
             $message = session('error');
         }
 
-        $class = ['w3-pale-blue w3-border-blue', 'w3-pale-green w3-border-green','w3-pale-red w3-border-red', 'w3-pale-yellow w3-border-yellow'];
-
         #message value & store value for $data
-        $data = ['message' => $message, 'store' => $store, "class" =>$class];
+        $data = ['message' => $message, 'boards' => $boards];
 
-        return view('menu.index', $data);
+        return view('board.index', $data);
     }
 
-    public function create($id)
+
+
+    public function create()
     {
-    	return view('board.create', ['store_id' => $id]);
+    	$stores = Store::all();
+        $data = ['stores' =>$stores];
+        return view('board.create', $data);
+    }
+
+    public function createProcess(Request $request)
+    {
+        $name = $request->board_name;
+        $store_id = $request->store_id;
+        $end_time = $request->end_time;
+
+        $board = new Board;
+
+        $board->name = $name;
+        $board->store_id = $store_id;
+        $board->endtime = $end_time;
+
+        //$board->save();
+        if($board->save()){
+            $request->session()->flash('success', 'create Successful');
+        }else{
+            $request->session()->flash('error', 'create Error');
+        }
+        return redirect('/');
     }
 }

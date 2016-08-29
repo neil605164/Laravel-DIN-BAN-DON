@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', 'StoreController@index');
 
 #store
 /*
@@ -45,7 +44,7 @@ Route::post('/addMenu', 'MenuController@addProcess');
 Route::get('/editMenu/{id}','MenuController@edit');
 Route::put('/editMenu', 'MenuController@editProcess');
 
-Route::delete('/aa', 'MenuController@deleteProcess');
+//Route::delete('/aa', 'MenuController@deleteProcess');
 
 #boarder
 /*
@@ -55,8 +54,10 @@ add order
 delete order
 delete boarder
 */
-Route::get('/create/{id}', 'BoardController@create');
+Route::get('/', 'BoardController@index');
 
+Route::get('/create', 'BoardController@create');
+Route::post('/create', 'BoardController@createProcess');
 
 Auth::routes();
 

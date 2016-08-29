@@ -11,8 +11,8 @@ class Board extends Model
     	return $this->hasMany('App\Member');		
     }
 
-    public function stores()
+    public function store()
     {
-    	return $this->hasMany('App\Store');		
+    	return $this->belongsTo('App\Store');	
     }
 }
