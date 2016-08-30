@@ -44,7 +44,7 @@ Route::post('/addMenu', 'MenuController@addProcess');
 Route::get('/editMenu/{id}','MenuController@edit');
 Route::put('/editMenu', 'MenuController@editProcess');
 
-//Route::delete('/aa', 'MenuController@deleteProcess');
+//Route::delete('/dd', 'MenuController@deleteProcess');
 
 #boarder
 /*
@@ -58,6 +58,14 @@ Route::get('/', 'BoardController@index');
 
 Route::get('/create', 'BoardController@create');
 Route::post('/create', 'BoardController@createProcess');
+
+Route::get('/addOrder/{id}', 'BoardController@addOrder');
+Route::post('/addOrder', 'BoardController@addOrderProcess');
+
+Route::get('/deleteOrder/{id}', 'BoardController@deleteOrder');
+Route::post('/deleteOrder', 'BoardController@deleteOrderProcess');
+
+Route::get('/delete/{id}', 'BoardController@deleteIndex');
 
 Auth::routes();
 

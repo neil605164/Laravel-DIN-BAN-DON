@@ -100,6 +100,10 @@ class StoreController extends Controller
 
     	$store = Store::find($id);
 
+        foreach ($store->menus as $menu) {
+            $menu->delete();
+        }
+
     	if($store->delete()){
             $request->session()->flash('success', 'editStore Successful');
     	}else{

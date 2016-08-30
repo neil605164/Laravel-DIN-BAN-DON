@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Store;
 use App\Menu;
 use App\Board;
+use App\Member;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -29,6 +31,7 @@ class BoardController extends Controller
         if ($request->session()->has('error')) {
             $message = session('error');
         }
+
 
         #message value & store value for $data
         $data = ['message' => $message, 'boards' => $boards];
@@ -63,6 +66,82 @@ class BoardController extends Controller
         }else{
             $request->session()->flash('error', 'create Error');
         }
+        return redirect('/');
+    }
+
+    public function addOrder($id)
+    {
+        $board = Board::find($id);
+        $data = ['board' => $board];
+        return view('board.addOrder', $data);
+    }
+
+    public function addOrderProcess(Request $request)
+    {
+        $name = $request->username;
+        $board_id = $request->board_id;
+        $store_id = $request->store_id;
+        $menus_id = $request->menus;
+
+        foreach ($menus_id as $menu) {
+            $member = new Member;
+                
+            $member->name = $name;
+            $member->board_id = $board_id;
+            $member->store_id = $store_id;
+            $member->menu_id = $menu;
+
+            $member->save();
+        }
+        //$request->session()->flash('success', 'create Successful');
+        return redirect('/');
+    }
+
+    public function deleteOrder($id)
+    {
+        $board = Board::find($id);
+        $datas = [];
+        $i=0;
+
+        //用board資料表的id,去對應到member資料表的board_id
+        //下if指令,判斷member資料表的name與user資料表的name是否相等,若相等....
+        //取得判斷後,篩選的整筆member資料
+        foreach($board->members as $member)
+        {
+            if($member->name == Auth::user()->name)
+            {
+                $datas[$i] = $member;
+                $i++;
+            }
+            
+        }
+        $data = ['members' => $datas];
+        return view('board.deleteOrder', $data);
+    }
+
+    public function deleteOrderProcess(Request $request)
+    {
+        $members_id = $request->members;
+
+        $members = Member::find($members_id);
+
+        $id=0;
+        foreach($members as $member)
+        {   
+            $id = $member->board_id;
+            $member->delete();
+        }
+        return redirect('/deleteOrder/' . $id);
+    }
+
+    public function deleteIndex($id)
+    {
+        $board = Board::find($id);
+
+        foreach ($board->members as $member) {
+            $member->delete();
+        }
+        $board->delete();
         return redirect('/');
     }
 }

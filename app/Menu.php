@@ -10,4 +10,9 @@ class Menu extends Model
     {
     	return $this->belongsTo('App\Store');	
     }
+
+    public function members()
+    {
+    	return $this->hasMany('App\Member');	
+    }
 }

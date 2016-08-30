@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','logout')
+@section('title','register')
 @section('content')
 <form class="w3-container" role="form" method="POST" action="{{ url('/register') }}">
 {{ csrf_field() }}

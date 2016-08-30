@@ -28,7 +28,7 @@
         <a href="{{ url('/create') }}">揪團訂購</a>
         @if (Auth::guest())
         <a href="{{ url('/login') }}">登入</a>
-        <a href="{{ url('/register') }}">登出</a>
+        <a href="{{ url('/register') }}">註冊</a>
         @else
         <a href="{{ url('/logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
 
