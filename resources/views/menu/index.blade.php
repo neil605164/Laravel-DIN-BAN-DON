@@ -3,7 +3,13 @@
 
 @section('content')
 
-<p>{{$message}}</p>
+@if($message != '')
+<div class="w3-panel w3-red">
+<span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
+	<h3><p>{{$message}}</p></h3>
+</div>
+@endif
+
 <a href="{{ url('/addMenu/' . $store->id) }}" style="text-decoration:none; position: fixed; top: 52px; right: 50px;" class="w3-btn-floating w3-teal w3-right ">+</a>
 <h1>{{$store->name}}</h1>
 

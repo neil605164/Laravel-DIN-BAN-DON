@@ -2,8 +2,13 @@
 @section('title', 'Store')
 
 @section('content')
+@if($message != '')
+<div class="w3-panel w3-red">
+<span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
+	<h3><p>{{$message}}</p></h3>
+</div>
+@endif
 
-<p>{{$message}}</p>
 <a href="{{ url('/add') }}" style="text-decoration:none; position: fixed; top: 52px; right: 50px;" class="w3-btn-floating w3-teal w3-right ">+</a>
 @foreach($stores as $index => $store)
 <div class="w3-panel w3-leftbar {{ $class[ $index%4 ] }}">

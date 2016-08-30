@@ -3,7 +3,12 @@
 
 @section('content')
 
-<p>{{$message}}</p>
+@if($message != '')
+<div class="w3-panel w3-red">
+<span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
+	<h3><p>{{$message}}</p></h3>
+</div>
+@endif
 
 
 <div class="w3-card-4">
