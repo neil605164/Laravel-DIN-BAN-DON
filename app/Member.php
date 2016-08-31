@@ -15,4 +15,9 @@ class Member extends Model
     {
     	return $this->belongsTo('App\Menu');	
     }
+
+    public function store()
+    {
+    	return $this->belongsTo('App\Store');	
+    }
 }

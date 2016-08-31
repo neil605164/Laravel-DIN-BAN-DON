@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Store')
+@section('title', '公佈欄')
 
 @section('content')
 

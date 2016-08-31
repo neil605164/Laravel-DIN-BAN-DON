@@ -20,7 +20,7 @@
       <li>type:{{ $store->type }}</li>
     </ul>
 
-<a href="{{ url('/menu/' . $store->id) }}" class="w3-btn w3-theme">Show Menu</a>
+<p><a href="{{ url('/menu/' . $store->id) }}" class="w3-btn w3-theme">顯示菜單</a></p>
 </div>
 @endforeach
 @endsection

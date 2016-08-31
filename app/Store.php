@@ -15,4 +15,9 @@ class Store extends Model
     {
     	return $this->hasMany('App\Board');		
     }
+
+    public function members()
+    {
+    	return $this->hasMany('App\Member');		
+    }
 }

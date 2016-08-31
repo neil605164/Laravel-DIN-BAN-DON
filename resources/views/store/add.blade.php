@@ -20,7 +20,7 @@
     </div class="w3-input-group">
 
     <div>
-    	<?php $types=['aa','bb','cc','dd']; ?>
+    	<?php $types=['早餐','午餐','晚餐','下午茶']; ?>
     	@foreach($types as $type)
     	<input class="w3-radio" type="radio" name="type" value="{{$type}}">
 		<label class="w3-validate">{{$type}}</label>
@@ -29,7 +29,7 @@
         
 
     <div class="w3-input-group">                      
-    <button class="w3-btn w3-blue">Register</button>
+    <button class="w3-btn w3-blue">增加店家</button>
     </div>
 </form>
 @endsection

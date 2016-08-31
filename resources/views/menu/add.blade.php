@@ -17,7 +17,7 @@
     <input type="hidden" name="id" value="{{$store_id}}">    
 
     <div class="w3-input-group">                      
-    <button class="w3-btn w3-blue">add Menu</button>
+    <button class="w3-btn w3-blue">增加菜單</button>
     </div>
 </form>
 @endsection

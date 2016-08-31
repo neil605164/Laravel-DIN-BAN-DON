@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Store;
 use App\Menu;
 use App\Board;
+use APP\Member;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -101,12 +102,19 @@ class StoreController extends Controller
 
     	$store = Store::find($id);
 
+        //再刪除店家資料前要先刪除菜單資料
         foreach ($store->menus as $menu) {
             $menu->delete();
         }
 
+        //再刪除店家資料前要先刪除公佈欄資料
         foreach($store->boards as $board){
             $board->delete();
+        }
+
+        //因為已經刪除公布欄資料，所以訂購資訊不應該還停在資料庫，所以也必須刪除
+        foreach($store->members as $member){
+            $member->delete();
         }
 
     	if($store->delete()){
