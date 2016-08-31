@@ -18,6 +18,7 @@
 
     <div class="w3-input-group">                      
     <button class="w3-btn w3-blue">增加菜單</button>
+    <a class="w3-btn w3-blue" href="{{ url('/menu/' . $store_id) }}">觀看菜單</a>
     </div>
 </form>
 @endsection

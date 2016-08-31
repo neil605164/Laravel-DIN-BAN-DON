@@ -58,7 +58,7 @@ class MenuController extends Controller
     	}else{
     		$request->session()->flash('error', 'addMenu Error');
     	}
-    	return redirect('/store');
+    	return redirect('/addMenu/' . $store_id);
     }
 
     public function edit($id)

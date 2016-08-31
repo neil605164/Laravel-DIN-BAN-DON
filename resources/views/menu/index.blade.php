@@ -18,5 +18,6 @@
       <li>{{ $menu->name }}:{{ $menu->price }}</li>
 @endforeach
 </ul>
-<p><a href="{{ url('/editMenu/' . $store->id) }}" class="w3-btn w3-theme">編輯菜單</a></p>
+<p><a href="{{ url('/editMenu/' . $store->id) }}" class="w3-btn w3-theme">編輯菜單</a>
+<a href="{{ url('/store') }}" class="w3-btn w3-theme">返回店家</a></p>
 @endsection

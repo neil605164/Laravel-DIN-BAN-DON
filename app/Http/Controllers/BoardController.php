@@ -22,7 +22,6 @@ class BoardController extends Controller
     public function index(Request $request)
     {
         $boards = Board::all();
-        
 
         $message = '';
         if ($request->session()->has('success')) {
