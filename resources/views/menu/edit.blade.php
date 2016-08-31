@@ -27,7 +27,7 @@
     
 </form>
 
-<form id="delete-form" action="{{ url('/aa')}}" method="POST" style="display: none;">{{ csrf_field() }}
+<form id="delete-form" action="{{ url('/delete')}}" method="POST" style="display: none;">{{ csrf_field() }}
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="id" value="{{$store->id}}">
 </form>

@@ -44,7 +44,7 @@ Route::post('/addMenu', 'MenuController@addProcess');
 Route::get('/editMenu/{id}','MenuController@edit');
 Route::put('/editMenu', 'MenuController@editProcess');
 
-//Route::delete('/dd', 'MenuController@deleteProcess');
+Route::delete('/delete', 'MenuController@deleteProcess');
 
 #boarder
 /*

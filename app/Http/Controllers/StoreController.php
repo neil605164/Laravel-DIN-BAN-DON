@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Store;
 use App\Menu;
+use App\Board;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
@@ -102,6 +103,10 @@ class StoreController extends Controller
 
         foreach ($store->menus as $menu) {
             $menu->delete();
+        }
+
+        foreach($store->boards as $board){
+            $board->delete();
         }
 
     	if($store->delete()){
